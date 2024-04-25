@@ -1,3 +1,4 @@
+// Find an average color from uploaded image
 document.getElementById('imageLoader').addEventListener('change', function(event) {
     const file = event.target.files[0];
     const reader = new FileReader();
