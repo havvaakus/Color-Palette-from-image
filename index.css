@@ -38,3 +38,92 @@ body {
     width: 200px;
     height: 200px;
 }
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 2s forwards;
+}
+body {
+    text-align: center;
+    margin-top: 200px;
+}
+
+#main   {
+    align-items: center;
+    justify-content: center;
+    display: flex;          /* Enables flexbox */
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+#palette {
+    text-align: center;
+}
+
+#palette div {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease-in-out;
+    margin-top: 40px;
+    width: 150px;
+    height: 400px;
+    display: inline-block;
+}
+#palette-codes {
+    text-align: center;
+}
+
+#palette-codes div {
+    transition: transform 0.3s ease-in-out;
+    margin-top: 10px;
+    width: 150px;
+    display: inline-block;
+}
+
+
+select {
+    margin: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 312px;
+    height: 42px;
+}
+
+button {
+    background-color: #FFFFFF;
+    color: black;
+    cursor: pointer;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+    height: 42px;
+}
+
+button:hover {
+    background-color: #FFFFFF;
+}
+
+#colorPicker { 
+    height: 42px;
+    border: none;
+    outline: none;
+}
+ ::-webkit-color-swatch {
+    border: none;
+    border-radius: 2px;
+}::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+#check-mark {
+    vertical-align: middle;
+}
