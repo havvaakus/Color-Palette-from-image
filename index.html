@@ -6,10 +6,27 @@
         <title>Average RGB Calculator</title>
     </head>
     <body>
-        <!-- <img id="selected-image"/> -->
-        <input type="file" id="imageLoader" accept="image/*" onchange="loadFile(event)"/>
-        <canvas id="imageCanvas" style="display:none;"></canvas>
-        <div id="avgColor"></div>
+        <h2>Color Scheme Generator</h2>
+        <main id="main">
+            <input type="color" id="colorPicker" aria-label="Select a color"/>
+            <!-- <img id="selected-image"/> -->
+            <input type="file" id="imageLoader" accept="image/*" onchange="loadFile(event)"/>
+            <canvas id="imageCanvas" style="display:none;"></canvas>
+            <div id="avgColor"></div>
+            
+            <select id="modeSelect">
+                <option value="monochrome">Monochrome</option>
+                <option value="monochrome-dark">Monochrome-dark</option>
+                <option value="monochrome-light">Monochrome-light</option>
+                <option value="analogic">Analogic</option>
+                <option value="complement">Complement</option>
+                <option value="analogic-complement">Analogic-complement</option>
+                <option value="triad">Triad</option>
+            </select>
+            <button id="getColorScheme">Get Color Scheme</button>
+        </main>       
+        <div id="palette"></div>
+        <div id="palette-codes"></div>
         <script src="index.js"></script>
     </body>
 </html>
