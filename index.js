@@ -42,15 +42,34 @@ document.getElementById('imageLoader').addEventListener('change', function(event
             b = Math.round(b / totalPixels);
 
             //Show average RGB as a backgrround color
-            document.getElementById('avgColor').textContent = `Average Color: RGB(${r}, ${g}, ${b})`;
-            document.getElementById('avgColor').style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            //document.getElementById('avgColor').textContent = `Average Color: RGB(${r}, ${g}, ${b})`;
+            //document.getElementById('avgColor').style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
+
+            const avgColorStyle = `rgb(${r}, ${g}, ${b})`;
+            document.getElementById('avgColor').textContent = `Average Color: RGB(${r}, ${g}, ${b})`;
+            document.getElementById('avgColor').style.backgroundColor = avgColorStyle;
+        
+             // Calculate and set optimal text color based on average background color
+            const textColor = getOptimalTextColor(r, g, b);
+            document.getElementById('avgColor').style.color = textColor;
+            document.getElementById("file-upload-btn").style.color = textColor;
+            
+            // Helper function to calculate luminance and determine text color
+            function getOptimalTextColor(r, g, b) {
+                // Using the luminance formula to find ideal text color
+                const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+                return (luminance > 128) ? 'black' : 'white';
+            }
+
+           
             //Convert rgb to hex
             const hexColor = rgbToHex(r, g, b);
 
+
             // Show average RGB and Hex as a background color and text
             const avgColorDisplay = document.getElementById('avgColor');
-            avgColorDisplay.textContent = `${hexColor}`;
+            avgColorDisplay.textContent = `Average Color: ${hexColor}`;
             avgColorDisplay.style.backgroundColor = hexColor;
             document.getElementById("colorPicker").style.backgroundColor = hexColor;
             document.getElementById("colorPicker").value = hexColor;
