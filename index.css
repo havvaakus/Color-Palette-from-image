@@ -16,6 +16,9 @@ body {
     padding: 10px 20px;
     cursor: pointer;
 }
+#avgColor {
+    margin: 5px 5px;
+}
 
 #displayImage {
     max-width: 90%;
@@ -23,20 +26,12 @@ body {
     margin-top: 20px;
 }
 
-#avgColor {
-    margin-top: 20px;
-    font-size: 20px;
-    color: #666;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 4px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
 #selected-image {
-    width: 200px;
-    height: 200px;
+    border: none;
+    outline: none;
+    width: 150px;
+    height: 150px;
+    /*display: none;*/
 }
 
 @keyframes fadeOut {
@@ -54,9 +49,12 @@ body {
 body {
     text-align: center;
     margin-top: 200px;
+    font-family: Arial, sans-serif;
 }
 
 #main   {
+    font-family: Arial, sans-serif;
+    font-size: small;
     align-items: center;
     justify-content: center;
     display: flex;          /* Enables flexbox */
@@ -89,19 +87,25 @@ body {
 
 
 select {
-    margin: 5px;
+    margin: 20px;
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
     width: 312px;
     height: 42px;
+    font-family: Arial, sans-serif;
+}
+
+option {
+    font-family: Arial, sans-serif;
+    font-size: small;
 }
 
 button {
     background-color: #FFFFFF;
     color: black;
     cursor: pointer;
-    margin: 5px;
+    margin: 1px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -126,4 +130,36 @@ button:hover {
 }
 #check-mark {
     vertical-align: middle;
+}
+
+#file-upload-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: small;
+    cursor: pointer;
+    margin: 20px 10px;
+    border-radius: 5px;
+    width: 100px;
+}
+
+#inputs   {
+    align-items: center;
+    justify-content: center;
+    display: flex;          /* Enables flexbox */
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+#pick-color {
+    padding: 0px 10px;
+    font-family: Arial, sans-serif;
+    font-size: small;
+    color: #333;
+    align-items: center;
+    justify-content: center;
 }

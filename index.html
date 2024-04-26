@@ -7,11 +7,21 @@
 </head>
 <body>
     <h2>Color Scheme Generator</h2>
-    <main id="main">
-        <label for="colorPicker">Select a color:</label>
-        <input type="color" id="colorPicker" aria-label="Select a color"/>
-        
-        <label for="modeSelect">Select scheme mode:</label>
+    <!-- Upload Part -->
+    <div id="upload-part">
+        <div id="inputs">
+            <img id="selected-image">
+            <label for="imageLoader" id="file-upload-btn">Choose a file</label>
+            <input type="file" id="imageLoader" accept="image/*" onchange="loadFile(event)" style="display: none;">
+            <p id="pick-color">or Pick a Color &rarr;</p>
+            <input type="color" id="colorPicker" aria-label="Select a color">            
+        </div>
+        <div id="avgColor"></div>
+        <canvas id="imageCanvas" style="display:none;"></canvas>
+    </div>
+
+    <!-- Color Picker Part -->
+    <div id="colorpicker-part">
         <select id="modeSelect">
             <option value="monochrome">Monochrome</option>
             <option value="monochrome-dark">Monochrome Dark</option>
@@ -21,16 +31,12 @@
             <option value="analogic-complement">Analogic Complement</option>
             <option value="triad">Triad</option>
         </select>
+    </div>
+    <div>
         <button id="getColorScheme">Get Color Scheme</button>
-    </main>       
+    </div>
     <div id="palette"></div>
     <div id="palette-codes"></div>
-
-    <h2>Average RGB Calculator</h2>
-    <input type="file" id="imageLoader" accept="image/*">
-    <div id="avgColor">Average Color</div>
-    <canvas id="imageCanvas" style="display:none;"></canvas>
-
     <script src="index.js"></script>
 </body>
 </html>

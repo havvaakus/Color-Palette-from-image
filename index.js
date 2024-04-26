@@ -2,6 +2,16 @@
 document.getElementById('imageLoader').addEventListener('change', function(event) {
     const file = event.target.files[0];
     const reader = new FileReader();
+     
+    // Function to convert RGB values to Hex
+    function rgbToHex(r, g, b) {
+        function componentToHex(c) {
+            var hex = c.toString(16);
+            return hex.length == 1 ? "0" + hex : hex;
+        }
+        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+    
     
     reader.onload = function(fileEvent) {
         const img = new Image();
@@ -30,9 +40,21 @@ document.getElementById('imageLoader').addEventListener('change', function(event
             r = Math.round(r / totalPixels);
             g = Math.round(g / totalPixels);
             b = Math.round(b / totalPixels);
+
             //Show average RGB as a backgrround color
             document.getElementById('avgColor').textContent = `Average Color: RGB(${r}, ${g}, ${b})`;
             document.getElementById('avgColor').style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+
+            //Convert rgb to hex
+            const hexColor = rgbToHex(r, g, b);
+
+            // Show average RGB and Hex as a background color and text
+            const avgColorDisplay = document.getElementById('avgColor');
+            avgColorDisplay.textContent = `${hexColor}`;
+            avgColorDisplay.style.backgroundColor = hexColor;
+            document.getElementById("colorPicker").style.backgroundColor = hexColor;
+            document.getElementById("colorPicker").value = hexColor;
+            document.getElementById("file-upload-btn").style.backgroundColor = hexColor;
         };
         
         img.src = fileEvent.target.result;
@@ -43,9 +65,16 @@ document.getElementById('imageLoader').addEventListener('change', function(event
     }
 });
 
+document.getElementById('colorPicker').addEventListener('change', function(event) {
+    var color = event.target.value;
+    console.log("Final color selected: ", color);
+    // Actions here, e.g., update the background color of a specific element
+    document.getElementById("file-upload-btn").style.backgroundColor = color
+});
+
+// Show to uploaded image on the page
 var loadFile = function(event) {
     var img = document.createElement('img');
-    img.id = 'selected-image';
     document.body.appendChild(img);
     var output = document.getElementById('selected-image');
     output.src = URL.createObjectURL(event.target.files[0]);
@@ -54,7 +83,10 @@ var loadFile = function(event) {
     }
   };
 
-  document.getElementById("colorPicker").addEventListener('input', function() {
+
+
+//Color picker part start
+    document.getElementById("colorPicker").addEventListener('input', function() {
     const selectedColor = this.value;
     document.getElementById("colorPicker").style.backgroundColor = selectedColor;
 });
