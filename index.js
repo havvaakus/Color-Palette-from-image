@@ -54,7 +54,7 @@ document.getElementById('imageLoader').addEventListener('change', function(event
             const textColor = getOptimalTextColor(r, g, b);
             document.getElementById('avgColor').style.color = textColor;
             document.getElementById("file-upload-btn").style.color = textColor;
-            
+    
             // Helper function to calculate luminance and determine text color
             function getOptimalTextColor(r, g, b) {
                 // Using the luminance formula to find ideal text color
