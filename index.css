@@ -18,7 +18,7 @@ body {
 }
 
 #imageLoader {
-    display: none;
+    margin: 20px;
 }
 #avgColor {
     padding: 4px 4px;
@@ -32,19 +32,17 @@ body {
     font-size: small; /* Example font size */
 }
 
-#displayImage {
-    max-width: 90%;
-    max-height: 400px;
-    margin-top: 20px;
-}
-
 #selected-image {
-    border: 1px soliid black;
-    outline: none;
-    width: 150px;
-    height: 150px;
-    opacity: 0;
-    /*display: none;*/
+    display: block; /* Ensures the image is a block element to avoid bottom margin/spacing */
+    margin: 10px auto;
+    border: none; /* Confirms no border */
+    outline: none; /* Removes focus outline */
+    width: 100px; /* Fixed width */
+    height: 100px; /* Fixed height */
+    object-fit: cover; /* Ensures the image covers the area, might be useful after loading */
+    background: transparent; /* Ensures no background is visible */
+    visibility: hidden; /* Hides the element until an image is loaded */
+    
 }
 
 @keyframes fadeOut {
@@ -100,7 +98,6 @@ body {
 
 
 select {
-    margin: px;
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -154,7 +151,7 @@ button:hover {
     font-family: Arial, sans-serif;
     font-size: small;
     cursor: pointer;
-    margin: 30px 10px;
+    /* margin: 30px 10px */
     border-radius: 5px;
     width: 100px;
 }
@@ -165,6 +162,7 @@ button:hover {
     display: flex; 
     flex-direction: row;
     gap: 5px;
+    padding: 0px;
 }
 
 #pick-color {
@@ -179,7 +177,7 @@ button:hover {
     margin: 0px 0px;
 }
 #getColorScheme {
-    margin: 0px 0px;
+    margin: 10px auto;
 }
 #modeSelect {
     margin: 0px 0px;

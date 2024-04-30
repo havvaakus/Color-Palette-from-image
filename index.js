@@ -91,17 +91,15 @@ document.getElementById('colorPicker').addEventListener('change', function(event
     document.getElementById("file-upload-btn").style.backgroundColor = color
 });
 
-// Show to uploaded image on the page
+//Show to uploaded image on the page
 var loadFile = function(event) {
-    var img = document.createElement('img');
-    document.body.appendChild(img);
     var output = document.getElementById('selected-image');
     output.src = URL.createObjectURL(event.target.files[0]);
     output.onload = function() {
-      URL.revokeObjectURL(output.src) // free memory
+        URL.revokeObjectURL(output.src); // Free memory
+        output.style.visibility = 'visible'; // Make image visible after it's loaded
     }
-  };
-
+};
 
 
 //Color picker part start
