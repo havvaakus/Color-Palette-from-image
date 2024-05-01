@@ -1,3 +1,12 @@
+
+    
+// Helper function to calculate luminance and determine text color
+function getOptimalTextColor(r, g, b) {
+    // Using the luminance formula to find ideal text color
+    const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    return (luminance > 128) ? 'black' : 'white';
+}
+
 // Find an average color from uploaded image
 document.getElementById('imageLoader').addEventListener('change', function(event) {
     const file = event.target.files[0];
@@ -42,10 +51,6 @@ document.getElementById('imageLoader').addEventListener('change', function(event
             b = Math.round(b / totalPixels);
 
             //Show average RGB as a backgrround color
-            //document.getElementById('avgColor').textContent = `Average Color: RGB(${r}, ${g}, ${b})`;
-            //document.getElementById('avgColor').style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-
-
             const avgColorStyle = `rgb(${r}, ${g}, ${b})`;
             document.getElementById('avgColor').textContent = `Average Color: RGB(${r}, ${g}, ${b})`;
             document.getElementById('avgColor').style.backgroundColor = avgColorStyle;
@@ -54,13 +59,6 @@ document.getElementById('imageLoader').addEventListener('change', function(event
             const textColor = getOptimalTextColor(r, g, b);
             document.getElementById('avgColor').style.color = textColor;
             document.getElementById("file-upload-btn").style.color = textColor;
-    
-            // Helper function to calculate luminance and determine text color
-            function getOptimalTextColor(r, g, b) {
-                // Using the luminance formula to find ideal text color
-                const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-                return (luminance > 128) ? 'black' : 'white';
-            }
 
            
             //Convert rgb to hex
@@ -73,7 +71,7 @@ document.getElementById('imageLoader').addEventListener('change', function(event
             avgColorDisplay.style.backgroundColor = hexColor;
             document.getElementById("colorPicker").style.backgroundColor = hexColor;
             document.getElementById("colorPicker").value = hexColor;
-            document.getElementById("file-upload-btn").style.backgroundColor = hexColor;
+            document.getElementById("file-upload-btn").style.backgroundColor = hexColor; 
         };
         
         img.src = fileEvent.target.result;
@@ -89,6 +87,19 @@ document.getElementById('colorPicker').addEventListener('change', function(event
     console.log("Final color selected: ", color);
     // Actions here, e.g., update the background color of a specific element
     document.getElementById("file-upload-btn").style.backgroundColor = color
+    
+    function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16)
+        } : null;
+      }
+
+    let rgb = hexToRgb(color)
+    const textColor = getOptimalTextColor(rgb.r, rgb.g, rgb.b);
+    document.getElementById("file-upload-btn").style.color = textColor;
 });
 
 //Show to uploaded image on the page
