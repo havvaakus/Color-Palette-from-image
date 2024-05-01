@@ -174,6 +174,8 @@ document.getElementById("getColorScheme").addEventListener('click', function() {
                 };
                 paletteCodes.appendChild(colorCodesDiv);
             });
+
+            window.scrollTo(0, document.body.scrollHeight);
         })
         .catch(error => {
             console.error('Error fetching color scheme:', error);
